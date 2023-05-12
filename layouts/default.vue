@@ -93,9 +93,9 @@ export default {
   name: 'DefaultLayout',
   data () {
     return {
-      clipped: false,
+      clipped: true,
       drawer: false,
-      fixed: false,
+      fixed: true,
       items: [
         {
           icon: 'mdi-apps',
@@ -108,7 +108,7 @@ export default {
           to: '/inspire'
         }
       ],
-      miniVariant: false,
+      miniVariant: true,
       right: true,
       rightDrawer: false,
       title: 'Vuetify.js'
