@@ -28,8 +28,8 @@ export default {
       spritePosition: '0px 0px',
       animationInterval: null,
       curentPosition: {
-        x: 0,
-        y: 0,
+        x: 720,
+        y: 560,
       },
       keyDownEvents: [],
     };
@@ -64,9 +64,8 @@ export default {
           this.curentPosition.x -= 10;
           break;
       }
-      this.spritePosition = `${this.curentPosition.x}px ${this.curentPosition.y}px`;
-    
-  }
+      this.spritePosition = `${this.curentPosition.x}px ${this.curentPosition.y}px`; 
+    },
   },
   mounted() {
     const ro = new ResizeObserver(entries => {
@@ -92,10 +91,15 @@ export default {
         const imageLeft = containerCenterX - imageWidth / 2;
         const imageTop = containerCenterY - imageHeight / 2;
         // Applique les dimensions et la position calculées à l'image
+        console.log(imageTop);
+        console.log(imageLeft);
+        console.log(imageWidth);
+        console.log(imageHeight);
+        console.log(`${(-this.curentPosition.x)}px ${(-this.curentPosition.y)}px`);
+        this.$refs.image.style.objectFit = `none`;
         this.$refs.image.style.width = `${imageWidth}px`;
         this.$refs.image.style.height = `${imageHeight}px`;
-        this.$refs.image.style.left = `${imageLeft}px`;
-        this.$refs.image.style.top = `${imageTop}px`;
+        this.$refs.image.style.objectPosition = `${(-this.curentPosition.x) + (imageWidth/2)}px ${(-this.curentPosition.y) + (imageHeight/2)}px`;
       }
     });
     ro.observe(this.$refs.imgContainer);
